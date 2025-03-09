@@ -5,6 +5,8 @@ VisualStudioVersion = 17.13.35806.99 d17.13
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CQRS_Sample", "CQRS_Sample\CQRS_Sample.csproj", "{BFD35A9A-C214-42F2-A0E8-97244A6A1D4E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CQRS_MinimalSample", "CQRS_MinimalSample\CQRS_MinimalSample.csproj", "{0CFEEB0E-16A9-427B-9B0B-42F2EC316AA2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{BFD35A9A-C214-42F2-A0E8-97244A6A1D4E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BFD35A9A-C214-42F2-A0E8-97244A6A1D4E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BFD35A9A-C214-42F2-A0E8-97244A6A1D4E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0CFEEB0E-16A9-427B-9B0B-42F2EC316AA2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0CFEEB0E-16A9-427B-9B0B-42F2EC316AA2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0CFEEB0E-16A9-427B-9B0B-42F2EC316AA2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0CFEEB0E-16A9-427B-9B0B-42F2EC316AA2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
