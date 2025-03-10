@@ -1,13 +1,14 @@
-﻿using CQRS_Sample.Domain;
+﻿using CQRS_MinimalSample.Domain;
 using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
+using System.Reflection.Emit;
 
-namespace CQRS_Sample.Persistence
+namespace CQRS_MinimalSample.Infrastructure
 {
-    public class AppDbContext : DbContext
+    public class AppDbContext : DbContext 
     {
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
         {
-            Database.EnsureCreated();
         }
         public DbSet<Product> Products { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
