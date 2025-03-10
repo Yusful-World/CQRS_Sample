@@ -37,16 +37,13 @@ namespace CQRS_Sample.Controllers
                 return BadRequest("Error creating product");
             }
 
-            return CreatedAtAction(nameof(GetProduct), productId);
+            return Created(nameof(GetProduct), new {id = productId});
         }
 
         [HttpPut("{id:guid}")]
         public async Task<IActionResult> UpdateProduct(Guid id, UpdateProductCommand updateProductCommand)
         {
-            if (id != updateProductCommand.Id)
-                return BadRequest("product Id mismatch");
-
-            var updatedProduct = await sender.Send(updateProductCommand);
+            var updatedProduct = await sender.Send(new UpdateProductRequest(id, updateProductCommand));
             
             return updatedProduct != null ? Ok(updatedProduct) : NotFound();
         }
@@ -55,10 +52,7 @@ namespace CQRS_Sample.Controllers
         public async Task<IActionResult> DeleteProduct(Guid id)
         {
             await sender.Send(new DeleteProductCommand(id));
-            if (Guid.Empty == id)
-            {
-                return NotFound();
-            }
+            
 
             return NoContent();
         }

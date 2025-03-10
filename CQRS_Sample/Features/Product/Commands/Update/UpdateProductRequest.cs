@@ -3,7 +3,7 @@ using MediatR;
 
 namespace CQRS_Sample.Features.Product.Commands.Update
 {
-    public record UpdateProductCommand(string Name, string Description, decimal Price) : IRequest<ProductDto> 
+    public record UpdateProductRequest(Guid Id, UpdateProductCommand Command) : IRequest<ProductDto>
     {
     }
 }
