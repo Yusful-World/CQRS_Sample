@@ -1,10 +1,12 @@
 using CQRS_MinimalSample.Features.Product.Command.Create;
 using CQRS_MinimalSample.Features.Product.Command.Delete;
+using CQRS_MinimalSample.Features.Product.Command.Update;
 using CQRS_MinimalSample.Features.Product.Queries.Get;
 using CQRS_MinimalSample.Features.Product.Queries.List;
 using CQRS_MinimalSample.Infrastructure;
 using MediatR;
 using Microsoft.AspNetCore.Hosting.Server;
+using Microsoft.AspNetCore.Http.HttpResults;
 using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -45,6 +47,17 @@ app.MapPost("/products", async (CreateProductCommand command, ISender mediatr) =
     var productId = await mediatr.Send(command);
     if (Guid.Empty == productId) return Results.BadRequest();
     return Results.Created($"/products/{productId}", new { id = productId });
+});
+
+app.MapPut("/products/{id:guid}", async (Guid id, UpdateProductCommand command, ISender mediatr) =>
+{
+    var updatedProduct = await mediatr.Send(new UpdateProductRequest(id, command));
+    if (updatedProduct == null)
+    {
+        return Results.NotFound();
+    }
+    
+    return Results.Ok(updatedProduct);
 });
 
 app.MapDelete("/products/{id:guid}", async (Guid id, ISender mediatr) =>
